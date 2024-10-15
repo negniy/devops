@@ -4,11 +4,11 @@ on:
   release:
     types: [created]
 env:
-  IMAGE_NAME: devops
+  IMAGE_NAME: testapp
 
 jobs:
   call_workflow_build_and_test:
-    uses: ./.github/workflows/build_and_tests_pr.yml
+    uses: ./.github/workflows/dotnet-build-and-test.yml
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./TestServer-lab1/TestServer
-          file: ./TestServer-lab1/TestServer/Dockerfile
+          context: .TestServer-lab1/TestServer
+          file: .TestServer-lab1/TestServer/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME}}:${{ github.event.release.tag_name }} , ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME}}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:${{ github.event.release.tag_name }} , ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
