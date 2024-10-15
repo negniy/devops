@@ -19,7 +19,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore TestServer-lab1
     - name: Build TestServer
       run: dotnet build --no-restore TestServer-lab1/TestServer
     - name: Build TestServerTests
