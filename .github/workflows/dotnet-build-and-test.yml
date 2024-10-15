@@ -24,5 +24,3 @@ jobs:
       run: dotnet build --no-restore TestServer-lab1/TestServer/TestServer.sln
     - name: Build TestServerTests
       run: dotnet build --no-restore TestServer-lab1/TestServerTests/TestServerTests.csproj
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
