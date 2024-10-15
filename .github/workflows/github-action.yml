@@ -25,7 +25,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .TestServer-lab1/TestServer
-          file: .TestServer-lab1/TestServer/Dockerfile
+          context: ./TestServer-lab1/TestServer
+          file: ./TestServer-lab1/TestServer/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME}}:${{ github.event.release.tag_name }} , ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME}}:latest
